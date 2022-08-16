@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Bebas+Neue&family=DM+Sans:ital,wght@0,700;1,700&family=Figtree:wght@300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Kumbh+Sans:wght@100;200;300;400;500;600;700;800;900&family=League+Gothic&family=Lexend+Peta:wght@100;200;300;400;500;600;700;800;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&family=Outfit:wght@100;200;300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Smooch+Sans:wght@100;200;300;400;500;600;700;800;900&family=Staatliches&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer components {
+    a {
+        @apply text-gray-100 transition-all
+    }
+    a:hover {
+        @apply scale-125
+    }
+    .client__form {
+        @apply flex flex-col gap-2
+    }
+    .client__form div {
+        @apply relative
+    }
+    .client__form svg {
+        @apply absolute top-3 left-4 text-yellow-400
+    }
+    .client__form input {
+        @apply bg-gray-100 outline-none py-2 pl-14 pr-4 rounded-full
+    }
+    .declarant__form {
+        @apply flex flex-col gap-2
+    }
+    .declarant__form div {
+        @apply relative
+    }
+    .declarant__form svg {
+        @apply absolute top-3 left-4 text-blue-600
+    }
+    .declarant__form input {
+        @apply bg-gray-100 outline-none py-2 pl-14 pr-4 rounded-full
+    }
+    .client__bg-gradient {
+        @apply flex items-center justify-around bg-gradient-to-t from-white via-white to-yellow-50
+    }
+    .declarant__bg-gradient {
+        @apply flex items-center justify-around bg-gradient-to-t from-white via-white to-blue-50
+    }
+}
