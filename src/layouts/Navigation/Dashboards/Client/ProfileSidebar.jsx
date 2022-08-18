@@ -9,13 +9,13 @@ const ProfileSidebar = () => {
 
     return (
         
-        <div className='fixed flex justify-center bg-gray-50 px-2 py-5 h-screen w-20'>
+        <div className='fixed flex justify-center shadow-lg px-2 py-5 h-screen w-20'>
             
             <Link to={`account/${currUser.displayName}`}>
                 <Avatar 
                 name={currUser.displayName} 
                 src='https://bit.ly/broken-link' 
-                className='cursor-pointer'
+                className='cursor-pointer hover:scale-110 transition-all'
                 />
             </Link>
         </div>
