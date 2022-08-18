@@ -1,12 +1,15 @@
 import React from 'react'
 import { auth } from '../../services/firebase'
+import ProfileSidebar from '../../layouts/Navigation/Dashboards/Client/ProfileSidebar'
+import ClientBody from '../../layouts/body/Dashboards/Client/ClientBody'
 
 const ClientDashboard = () => {
-    function logout(){
-        auth.signOut()
-    }
+
     return (
-        <div onClick={logout}>logout</div>
+        <div className='flex'>
+            <ProfileSidebar />
+            <ClientBody />
+        </div>
     )
 }
 

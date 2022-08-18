@@ -1,10 +1,10 @@
 import React from 'react'
 import HomeCard from '../../../components/HomeCard'
 import { goalImage } from '../../../assets/images'
-import {faPlane} from '@fortawesome/free-solid-svg-icons'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { faPlane } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { motion } from 'framer-motion'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 const HomeBody = () => {

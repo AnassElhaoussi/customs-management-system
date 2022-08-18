@@ -5,7 +5,7 @@ import { shakingImage } from '../../../assets/images'
 
 const Sidebar = () => {
     return (
-        <div className='fixed z-10 top-0 bottom-0 left-0 bg-blue-600 flex flex-col items-center justify-evenly h-screen gap-10 text-xl px-6 w-28'>
+        <div className='home__sidebar'>
                 <a href="">
                     <FontAwesomeIcon icon={faHouse} />
                 </a>

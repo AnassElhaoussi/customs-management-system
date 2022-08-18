@@ -3,10 +3,13 @@
 @tailwind components;
 @tailwind utilities;
 @layer components {
-    a {
+    .home__sidebar {
+        @apply fixed z-10 top-0 bottom-0 left-0 bg-blue-600 flex flex-col items-center justify-evenly h-screen gap-10 text-xl px-6 w-28
+    }
+    .home__sidebar a {
         @apply text-gray-100 transition-all
     }
-    a:hover {
+    .home__sidebar a:hover {
         @apply scale-125
     }
     .client__form {
