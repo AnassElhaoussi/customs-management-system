@@ -37,7 +37,7 @@
         @apply bg-gray-100 outline-none py-2 pl-14 pr-4 rounded-full
     }
     .client__bg-gradient {
-        @apply flex items-center justify-around bg-gradient-to-t from-white via-white to-yellow-50
+        @apply flex items-center justify-around
     }
     .declarant__bg-gradient {
         @apply flex items-center justify-around bg-gradient-to-t from-white via-white to-blue-50

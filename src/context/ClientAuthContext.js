@@ -1,5 +1,5 @@
-import React, {useState, useEffect, useContext, createContext} from 'react'
-import { auth } from '../services/firebase'
+import React, {useState, useEffect, useContext, createContext, useRef} from 'react'
+import { auth, db } from '../services/firebase'
 import Loader from '../components/Loader'
 import { useNavigate } from 'react-router-dom'
 
@@ -10,13 +10,16 @@ export const ClientAuthProvider = ({children}) => {
     const [loading, setLoading] = useState(false)
     const [currUser, setCurrUser] = useState(null)
     const navigate = useNavigate()
+    const isMounted = useRef(false)
 
     useEffect(() => {
+
         auth.onAuthStateChanged(user => {
             if(user){
                 navigate('/client-dashboard')
                 setLoading(false)
                 setCurrUser(user)
+
             } else {
                 navigate('/')
                 setLoading(false)

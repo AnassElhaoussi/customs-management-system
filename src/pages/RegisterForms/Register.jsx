@@ -16,7 +16,7 @@ const Register = () => {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [password, setPassword] = useState('')
-  const [email, setEmail] = useState('')
+  const [emailValue, setEmailValue] = useState('')
   const [errMessage, setErrMessage] = useState('')
 
 
@@ -33,7 +33,7 @@ const Register = () => {
 
   const firstNameChange = (e) => setFirstName(e.target.value)
   const lastNameChange = (e) => setLastName(e.target.value)
-  const emailChange = (e) => setEmail(e.target.value)
+  const emailChange = (e) => setEmailValue(e.target.value)
   const passwordChange = (e) => setPassword(e.target.value)
 
   return (
@@ -91,7 +91,7 @@ const Register = () => {
             <input 
             type="email" 
             placeholder='Email' 
-            value={email} 
+            value={emailValue} 
             onChange={emailChange} />
           </div>
           <div>
@@ -107,7 +107,7 @@ const Register = () => {
             setErrMessage={setErrMessage}
             firstName={firstName}
             lastName={lastName}
-            email={email}
+            emailValue={emailValue}
             password={password} />
         </form>
       </div>

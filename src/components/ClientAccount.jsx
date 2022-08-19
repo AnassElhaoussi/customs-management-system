@@ -6,16 +6,13 @@ import { auth } from '../services/firebase'
 
 const ClientAccount = () => {
     const currUser = useContext(ClientAuthContext)
-    
 
     const handleSignOut = () => auth.signOut()
-    
-   
 
     return (
         <div className='h-screen'>
         <div
-            className='flex md:flex-row flex-col gap-5 items-center justify-center h-1/2 w-full bg-gradient-to-b from-blue-50 via-blue-50 to-white shadow-lg '>
+            className='flex md:flex-row flex-col gap-5 items-center justify-center h-1/2 w-full bg-gradient-to-b from-blue-50 via-blue-50 to-white border-b-[10px] border-gray-200 '>
                 <Avatar name={currUser.displayName} size='2xl' />
                 <div className='flex flex-col gap-5 md:items-start items-center'>
                     <div>
@@ -27,7 +24,7 @@ const ClientAccount = () => {
                     onClick={handleSignOut}>Logout</button>
                 </div>
             </div>
-            <div className='p-10 h-1/2 flex items-center sm:justify-center justify-start gap-x-20 gap-y-5 flex-wrap'>
+            <div className='p-10 h-1/2 flex items-center sm:justify-center justify-start gap-x-20 gap-y-5 flex-wrap py-28'>
                 <div className='space-y-2'>
                     <h2 className='text-gray-600'>Total Collections</h2>
                     <h1 className='text-4xl'>0</h1>

@@ -13,6 +13,7 @@ const ClientBody = () => {
                 <div className='flex items-center justify-center text-7xl 
                 text-white w-44 h-44 bg-blue-700 rounded-3xl cursor-pointer shadow-lg hover:scale-105 transition-all'>+</div>
             </div>
+        
         </div>
     )
 }   

@@ -1,7 +1,10 @@
-import React from 'react'
-import { auth } from '../services/firebase'
+import React, { useState } from 'react'
+import { auth, db } from '../services/firebase'
 
-const SubmitClientRegister = ({setErrMessage, firstName, lastName, email, password}) => {
+const SubmitClientRegister = ({setErrMessage, firstName, lastName, emailValue, password}) => {
+
+  const usernameRandomId = Math.floor(Math.random() * 90 + 10)
+  const newDisplayName = `${firstName}${lastName}${usernameRandomId}`
   
 
   const handleFormSubmit = async (e) => {
@@ -10,14 +13,18 @@ const SubmitClientRegister = ({setErrMessage, firstName, lastName, email, passwo
     if(firstName && lastName){
       try {
         const userCredentials = await auth
-        .createUserWithEmailAndPassword(email, password)
-
-        const usernameRandomId = Math.floor(Math.random() * 90 + 10)
-
-        userCredentials.user.updateProfile({
-          displayName: `${firstName}${lastName}${usernameRandomId}`
+        .createUserWithEmailAndPassword(emailValue, password)
+        
+        const { uid, email } = userCredentials.user
+        await userCredentials.user.updateProfile({
+          displayName: newDisplayName
         })
- 
+        await db.collection('clients').add({
+          displayName: newDisplayName,
+          uid,
+          email
+        })
+    
         setErrMessage('')
       } catch (error) {
         setErrMessage(error.message)
