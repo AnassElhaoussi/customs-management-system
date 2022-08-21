@@ -1,5 +1,8 @@
 import React from 'react'
 import { auth } from '../../../../services/firebase'
+import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFolderPlus } from '@fortawesome/free-solid-svg-icons'
 
 const ClientBody = () => {
 
@@ -8,10 +11,11 @@ const ClientBody = () => {
             <input 
             type="text"
             placeholder='Filter by collection name..'
-            className='py-2 px-10 outline-none bg-gray-50 rounded-full' />
+            className='py-2 px-10 outline-none rounded-full' />
             <div className=''>
-                <div className='flex items-center justify-center text-7xl 
-                text-white w-44 h-44 bg-blue-700 rounded-3xl cursor-pointer shadow-lg hover:scale-105 transition-all'>+</div>
+                <Link to='create-collection'>
+                   <FontAwesomeIcon icon={faFolderPlus} className='text-7xl hover:scale-110 transition-all' />
+                </Link>
             </div>
         
         </div>

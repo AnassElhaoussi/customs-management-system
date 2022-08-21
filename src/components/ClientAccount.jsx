@@ -12,28 +12,28 @@ const ClientAccount = () => {
     return (
         <div className='h-screen'>
         <div
-            className='flex md:flex-row flex-col gap-5 items-center justify-center h-1/2 w-full bg-gradient-to-b from-blue-50 via-blue-50 to-white border-b-[10px] border-gray-200 '>
+            className='flex md:flex-row flex-col gap-5 items-center shadow-lg justify-center h-1/2 w-full bg-gradient-to-b from-gray-50 via-gray-50 to-white '>
                 <Avatar name={currUser.displayName} size='2xl' />
                 <div className='flex flex-col gap-5 md:items-start items-center'>
-                    <div>
-                        <h1 className='md:text-5xl text-3xl font-bold text-blue-700'>{currUser.displayName}</h1>
-                        <p className=' font-semibold md:text-sm text-sm text-blue-500'>{currUser.email}</p>
+                    <div className='text-gray-800'>
+                        <h1 className='md:text-5xl text-3xl font-extrabold'>{currUser.displayName}</h1>
+                        <p className=' font-semibold md:text-sm text-sm'>{currUser.email}</p>
                     </div>
                     <button 
-                    className='py-1 px-10 font-bold bg-blue-900 text-gray-100 hover:px-12 transition-all rounded-full'
+                    className='py-1 px-10 font-bold bg-gray-500 text-gray-100 hover:border-b-8 hover:border-gray-200 transition-all rounded-md'
                     onClick={handleSignOut}>Logout</button>
                 </div>
             </div>
-            <div className='p-10 h-1/2 flex items-center sm:justify-center justify-start gap-x-20 gap-y-5 flex-wrap py-28'>
-                <div className='space-y-2'>
+            <div className='p-10 h-1/2 flex items-center justify-center gap-x-20 gap-y-5 flex-wrap py-28'>
+                <div className='space-y-2 bg-gray-50 rounded-md p-5 border-b-[5px] border-gray-500'>
                     <h2 className='text-gray-600'>Total Collections</h2>
                     <h1 className='text-4xl'>0</h1>
                 </div>
-                <div className='space-y-2'>
+                <div className='space-y-2 bg-gray-50 rounded-md p-5 border-b-[5px] border-gray-500'>
                     <h2 className='text-gray-600'>Total Documents</h2>
                     <h1 className='text-4xl'>0</h1>
                 </div>
-                <div className='space-y-2'>
+                <div className='space-y-2 bg-gray-50 rounded-md p-5 border-b-[5px] border-gray-500'>
                     <h2 className='text-gray-600'>Sent Collections</h2>
                     <h1 className='text-4xl'>0</h1>
                 </div>

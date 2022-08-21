@@ -10,7 +10,6 @@ export const ClientAuthProvider = ({children}) => {
     const [loading, setLoading] = useState(false)
     const [currUser, setCurrUser] = useState(null)
     const navigate = useNavigate()
-    const isMounted = useRef(false)
 
     useEffect(() => {
 

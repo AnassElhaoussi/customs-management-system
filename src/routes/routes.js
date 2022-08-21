@@ -9,6 +9,7 @@ import ClientDashboard from '../pages/Dashboards/ClientDashboard'
 import DeclarantDashboard from '../pages/Dashboards/DeclarantDashboard'
 import { ClientAuthContext } from '../context/ClientAuthContext'
 import ClientAccount from '../components/ClientAccount'
+import CreateCollection from '../components/CreateCollection'
 
 const AppRoutes = () => {
 
@@ -29,7 +30,7 @@ const AppRoutes = () => {
     },
     {
       path: '/client-dashboard',
-      element:<ClientDashboard />
+      element: <ClientDashboard />
     },
     {
       path: '/declarant-dashboard',
@@ -38,6 +39,11 @@ const AppRoutes = () => {
     {
       path: `/client-dashboard/account/${currUser?.displayName}`,
       element: <ClientAccount />
+    },
+    {
+      path: '/client-dashboard/create-collection',
+      element: <CreateCollection />
+
     }
   ]
 
