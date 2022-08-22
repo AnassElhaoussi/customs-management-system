@@ -3,27 +3,30 @@ import { db } from '../services/firebase'
 import {memo} from 'react'
 import { ClientAuthContext } from '../context/ClientAuthContext'
 import { useNavigate } from 'react-router-dom'
+import firebase from 'firebase/compat/app'
+import moment from 'moment'
 
 const SubmitCreateCollection = ({colName, colDescription, keywords, setErrorMessage}) => {
     const currUser = useContext(ClientAuthContext)
     const navigate = useNavigate()
 
     const submitCollection = async () => {
-        const { uid } = currUser
+        const { uid, displayName } = currUser
         if(
             colName.trim().length !== 0
             && colDescription.trim().length !== 0
             && keywords.length === 4
         ) {
-        w
             await db
             .collection('collections')
             .add({
                 collectionName: colName,
                 collectionDescription: colDescription,
                 keywords: keywords,
-                user: currUser.displayName,
-                uid
+                displayName,
+                uid,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                date: moment().format('MMMM Do YYYY, h:mm:ss a'),
             })
             
             setErrorMessage('')           
@@ -33,14 +36,10 @@ const SubmitCreateCollection = ({colName, colDescription, keywords, setErrorMess
         setErrorMessage('Oups, something is missing!')
     }
     
-    
         return <button 
-        className='bg-yellow-500 py-2 px-8 rounded-md hover:border-b-4 border-gray-600 shadow-md'
+        className='bg-blue-900 py-2 px-8 rounded-md'
         onClick={submitCollection}
         >Submit</button>
-                
-    
-    
 }
 
 export default memo(SubmitCreateCollection)

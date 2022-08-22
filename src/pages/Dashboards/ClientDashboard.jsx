@@ -9,9 +9,9 @@ const ClientDashboard = () => {
     
 
     return (
-        <div className='bg-gray-50'>
+        <div className='bg-gray-100'>
             <div className='h-screen'>
-                <div className='bg-gray-50 flex'>
+                <div className='bg-gray-100 flex'>
                     <ProfileSidebar />
                     <ClientBody />
                 </div>

@@ -20,7 +20,7 @@ const ClientAccount = () => {
                         <p className=' font-semibold md:text-sm text-sm'>{currUser.email}</p>
                     </div>
                     <button 
-                    className='py-1 px-10 font-bold bg-gray-500 text-gray-100 hover:border-b-8 hover:border-gray-200 transition-all rounded-md'
+                    className='py-2 px-10 font-bold bg-gray-500 text-gray-100 transition-all rounded-md'
                     onClick={handleSignOut}>Logout</button>
                 </div>
             </div>

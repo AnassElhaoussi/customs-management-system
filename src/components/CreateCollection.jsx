@@ -23,8 +23,8 @@ const CreateCollection = () => {
         <div className='bg-gray-100 h-screen text-gray-800 py-10'>
                 <div className='flex flex-col items-center text-center space-y-8'>
                     <div className='space-y-2 pb-5 border-b-[1px] border-gray-300'>
-                        <h1 className='text-4xl font-extrabold'>Create a Collection</h1>
-                        <p className='text-sm'>Describe your product to the declarants by creating a collection.</p>
+                        <h1 className='md:text-4xl text-2xl font-extrabold'>Create a Collection</h1>
+                        <p className='md:text-sm text-xs'>Describe your product to the declarants by creating a collection.</p>
                     </div>
                     {!collectionForm ? (
                         <button className='bg-gray-200 py-3 px-8 rounded-md hover:border-b-8 border-gray-500 transition-all'
@@ -35,28 +35,28 @@ const CreateCollection = () => {
                             className='text-6xl cursor-pointer' />
                         </button>
                     ) : (
-                        <div className='flex flex-col items-center gap-6'>
+                        <div className='flex flex-col items-center gap-6 '>
                             {errorMessage && (
                                 <span className='text-red-600'>{errorMessage}</span>
                             )}
                             
                             <form action="" 
-                            className='flex items-center pl-4 rounded-md'>
-                                <h3 className='text-gray-300 bg-gray-500 py-2 w-44 rounded-l-md'>Collection name</h3>
+                            className='flex md:flex-row flex-col items-start pl-4'>
+                                <h3 className='text-gray-300 bg-gray-500 py-2 md:w-44 w-full md:rounded-l-md rounded-t-md'>Collection name</h3>
                                 <input 
                                 type="text" 
                                 placeholder='Enter your collection name' 
-                                className='py-2 w-72 pl-4 outline-none rounded-r-md'
+                                className='py-2 w-72 pl-4 outline-none md:rounded-r-md rounded-b-md'
                                 value={colName}
                                 onChange={colNameChange} />
                             </form>
-                            <form action="" className='flex items-start pl-4 rounded-md'>
-                                <h3 className='bg-gray-500 py-2 rounded-l-md text-gray-300 w-44'>Description</h3>
+                            <form action="" className='flex md:flex-row flex-col items-start pl-4 '>
+                                <h3 className='bg-gray-500 py-2 md:rounded-l-md rounded-t-md text-gray-300 md:w-44 w-full'>Description</h3>
                                 <textarea 
                                 name="" id="" 
                                 cols="30" rows="1" 
                                 placeholder='Describe your product' 
-                                className='py-2 w-72 pl-4 outline-none rounded-r-md '
+                                className='py-2 w-72 pl-4 outline-none md:rounded-r-md rounded-b-md'
                                 value={colDescription}
                                 onChange={colDescriptionChange}
                                 ></textarea>
@@ -64,7 +64,7 @@ const CreateCollection = () => {
                            <Keywords
                             keywords={keywords} 
                             setKeywords={setKeywords} />
-                            <div className='flex gap-44 text-gray-800 font-bold'>
+                            <div className='flex md:gap-56 gap-12 font-semibold text-gray-300'>
                                 <SubmitCreateCollection 
                                     colName={colName}
                                     colDescription={colDescription}
@@ -73,7 +73,7 @@ const CreateCollection = () => {
                                     setErrorMessage={setErrorMessage}
                                 />
                                 <button 
-                                className='bg-yellow-500 py-2 px-8 rounded-md hover:border-b-4 border-gray-600 shadow-md'
+                                className='bg-blue-900 py-2 px-8 rounded-md'
                                 onClick={() => setCollectionForm(false)}>Cancel</button>
                             </div>
                         </div>
