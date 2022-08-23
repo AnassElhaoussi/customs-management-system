@@ -6,6 +6,7 @@ import { faFolderPlus, faLock } from '@fortawesome/free-solid-svg-icons'
 import { ClientAuthContext } from '../../../../context/ClientAuthContext'
 import { Avatar } from '@chakra-ui/react'
 import FilterCollections from '../../../../components/FilterCollections'
+import { errorImage } from '../../../../assets/images'
 
 
 const ClientBody = () => {
@@ -42,12 +43,13 @@ const ClientBody = () => {
                 searchValue={searchValue}
                 setSearchValue={setSearchValue}
             />
-            <div className='flex flex-col gap-y-10'>
+            <div className='relative flex flex-col items-start gap-y-10'>
                 <Link to='create-collection'>
                    <FontAwesomeIcon icon={faFolderPlus} className='text-7xl hover:scale-110 transition-all' />
                 </Link>
                 <div className='flex gap-x-4 flex-wrap gap-y-4 pr-5'>
                     {searchValue.length > 1 ? 
+                        filteredCollections.length > 0 ?
                         filteredCollections
                         .filter(({uid}) => auth.currentUser.uid === uid)
                         .map(({collectionName, collectionDescription, date, keywords}) => {
@@ -66,7 +68,7 @@ const ClientBody = () => {
                                             <div className='flex gap-1 flex-wrap'>
                                                 {keywords.map(keyword => {
                                                     return(
-                                                        <span className='bg-gray-300 py-2 px-4 font-semibold rounded-full text-[10px]'>
+                                                        <span className='bg-gray-300 border-b-2 border-gray-500 py-2 px-4 font-semibold rounded-full text-[10px]'>
                                                             {keyword}
                                                         </span>
                                                     )
@@ -78,7 +80,10 @@ const ClientBody = () => {
                                     </div>
                                 </div>
                             )
-                        }).reverse() : 
+                        }).reverse() : <div className='w-56'>
+                        <img src={errorImage} alt="" />
+                    </div>
+                        : 
                         userCollections
                         .filter(({uid}) => auth.currentUser.uid === uid)
                         .map(({collectionName, collectionDescription, date, keywords}) => {

@@ -1,5 +1,15 @@
 import React, {useEffect, useState} from 'react'
-import {Input, Text, Stack, InputGroup, HStack, Tag, TagLabel, TagCloseButton} from '@chakra-ui/react'
+import {
+  Input, 
+  Text, 
+  Stack, 
+  InputGroup, 
+  HStack, 
+  Tag, 
+  TagLabel, 
+  TagCloseButton
+} from '@chakra-ui/react'
+
 
 
 const Keywords = ({keywords, setKeywords}) => {
@@ -30,7 +40,7 @@ const Keywords = ({keywords, setKeywords}) => {
           <InputGroup display='flex' flexDirection='column' alignItems='start' gap='1rem'>
               <Text>Keywords : </Text>
               <Input
-              placeholder='Space key to submit a keyword'
+              placeholder='4 keywords are required (SPACE KEY TO SUBMIT)'
               value={keyword}
               onChange={e => setKeyword(e.target.value)} 
               />
