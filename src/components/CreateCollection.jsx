@@ -3,12 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
 import SubmitCreateCollection from './SubmitCreateCollection'
 import Keywords from './Keywords'
-import { ClientAuthContext } from '../context/ClientAuthContext'
-import Loader from './Loader'
+import { Input, Text, Textarea, Stack, InputGroup, Button } from '@chakra-ui/react'
 
 
 const CreateCollection = () => {
-    const currUser = useContext(ClientAuthContext)
     const [collectionForm, setCollectionForm] = useState(false)
     const [colName, setColName] = useState('')
     const [colDescription, setColDescription] = useState('')
@@ -35,36 +33,33 @@ const CreateCollection = () => {
                             className='text-6xl cursor-pointer' />
                         </button>
                     ) : (
-                        <div className='flex flex-col items-center gap-6 '>
+                        <Stack spacing={5} minWidth='40%'>
                             {errorMessage && (
                                 <span className='text-red-600'>{errorMessage}</span>
                             )}
-                            
-                            <form action="" 
-                            className='flex md:flex-row flex-col items-start pl-4'>
-                                <h3 className='text-gray-300 bg-gray-500 py-2 md:w-44 w-full md:rounded-l-md rounded-t-md'>Collection name</h3>
-                                <input 
-                                type="text" 
-                                placeholder='Enter your collection name' 
-                                className='py-2 w-72 pl-4 outline-none md:rounded-r-md rounded-b-md'
+                            <InputGroup display='flex' flexDirection='column' alignItems='start' gap='1rem'>
+                                <Text>Collection name : </Text>
+                                <Input
+                                placeholder='Enter your collection name'
                                 value={colName}
                                 onChange={colNameChange} />
-                            </form>
-                            <form action="" className='flex md:flex-row flex-col items-start pl-4 '>
-                                <h3 className='bg-gray-500 py-2 md:rounded-l-md rounded-t-md text-gray-300 md:w-44 w-full'>Description</h3>
-                                <textarea 
+                            </InputGroup>
+                            <InputGroup display='flex' flexDirection='column' alignItems='start' gap='1rem'>
+                                <Text>Description : </Text>
+                                <Textarea
                                 name="" id="" 
                                 cols="30" rows="1" 
                                 placeholder='Describe your product' 
                                 className='py-2 w-72 pl-4 outline-none md:rounded-r-md rounded-b-md'
                                 value={colDescription}
                                 onChange={colDescriptionChange}
-                                ></textarea>
-                            </form>
+                                
+                                ></Textarea>
+                            </InputGroup>
                            <Keywords
                             keywords={keywords} 
                             setKeywords={setKeywords} />
-                            <div className='flex md:gap-56 gap-12 font-semibold text-gray-300'>
+                            <Stack direction='row' display='flex' justifyContent='space-between'>
                                 <SubmitCreateCollection 
                                     colName={colName}
                                     colDescription={colDescription}
@@ -72,11 +67,11 @@ const CreateCollection = () => {
                                     setKeywords={setKeywords}
                                     setErrorMessage={setErrorMessage}
                                 />
-                                <button 
-                                className='bg-blue-900 py-2 px-8 rounded-md'
-                                onClick={() => setCollectionForm(false)}>Cancel</button>
-                            </div>
-                        </div>
+                                <Button
+                                colorScheme='blue' variant='solid'
+                                onClick={() => setCollectionForm(false)}>Cancel</Button>
+                            </Stack>
+                        </Stack>
                     )}
                 </div>
         </div>

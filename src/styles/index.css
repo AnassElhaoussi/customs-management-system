@@ -4,42 +4,42 @@
 @tailwind utilities;
 @layer components {
     .home__sidebar {
-        @apply fixed z-10 top-0 bottom-0 left-0 bg-blue-600 flex flex-col items-center justify-evenly h-screen gap-10 text-xl px-6 w-28
+        @apply fixed z-10 top-0 bottom-0 left-0 bg-blue-600 flex flex-col items-center justify-evenly h-screen gap-10 text-xl px-6 w-28;
     }
     .home__sidebar a {
-        @apply text-gray-100 transition-all
+        @apply text-gray-100 transition-all;
     }
     .home__sidebar a:hover {
-        @apply scale-125
+        @apply scale-125;
     }
     .client__form {
-        @apply flex flex-col gap-2
+        @apply flex flex-col gap-2;
     }
     .client__form div {
-        @apply relative
+        @apply relative;
     }
     .client__form svg {
-        @apply absolute top-3 left-4 text-yellow-400
+        @apply absolute top-3 left-4 text-yellow-400;
     }
     .client__form input {
-        @apply bg-gray-100 outline-none py-2 pl-14 pr-4 rounded-full
+        @apply bg-gray-100 outline-none py-2 pl-14 pr-4 rounded-full;
     }
     .declarant__form {
-        @apply flex flex-col gap-2
+        @apply flex flex-col gap-2;
     }
     .declarant__form div {
-        @apply relative
+        @apply relative;
     }
     .declarant__form svg {
-        @apply absolute top-3 left-4 text-blue-600
+        @apply absolute top-3 left-4 text-blue-600;
     }
     .declarant__form input {
-        @apply bg-gray-100 outline-none py-2 pl-14 pr-4 rounded-full
+        @apply bg-gray-100 outline-none py-2 pl-14 pr-4 rounded-full;
     }
     .client__bg-gradient {
-        @apply flex items-center justify-around
+        @apply flex items-center justify-around;
     }
     .declarant__bg-gradient {
-        @apply flex items-center justify-around bg-gradient-to-t from-white via-white to-blue-50
+        @apply flex items-center justify-around bg-gradient-to-t from-white via-white to-blue-50;
     }
 }

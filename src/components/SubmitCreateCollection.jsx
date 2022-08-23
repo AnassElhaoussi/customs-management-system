@@ -5,6 +5,7 @@ import { ClientAuthContext } from '../context/ClientAuthContext'
 import { useNavigate } from 'react-router-dom'
 import firebase from 'firebase/compat/app'
 import moment from 'moment'
+import { Button } from '@chakra-ui/react'
 
 const SubmitCreateCollection = ({colName, colDescription, keywords, setErrorMessage}) => {
     const currUser = useContext(ClientAuthContext)
@@ -36,10 +37,10 @@ const SubmitCreateCollection = ({colName, colDescription, keywords, setErrorMess
         setErrorMessage('Oups, something is missing!')
     }
     
-        return <button 
-        className='bg-blue-900 py-2 px-8 rounded-md'
+        return <Button
+        colorScheme='blue'
         onClick={submitCollection}
-        >Submit</button>
+        >Submit</Button>
 }
 
 export default memo(SubmitCreateCollection)

@@ -10,6 +10,7 @@ import DeclarantDashboard from '../pages/Dashboards/DeclarantDashboard'
 import { ClientAuthContext } from '../context/ClientAuthContext'
 import ClientAccount from '../components/ClientAccount'
 import CreateCollection from '../components/CreateCollection'
+import React from 'react'
 
 const AppRoutes = () => {
 

@@ -1,5 +1,6 @@
 import Sidebar from '../../layouts/Navigation/Home/Sidebar'
 import HomeBody from '../../layouts/body/Home/HomeBody'
+import React from 'react'
 
 const Home = () => {
   return (
