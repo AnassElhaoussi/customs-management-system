@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {Input, Text, Stack, InputGroup} from '@chakra-ui/react'
+import {Input, Text, Stack, InputGroup, HStack, Tag, TagLabel, TagCloseButton} from '@chakra-ui/react'
 
 
 const Keywords = ({keywords, setKeywords}) => {
@@ -16,6 +16,11 @@ const Keywords = ({keywords, setKeywords}) => {
     }
   }
 
+  const removeKeyword = (index) => {
+    const filteredKeywordsArr = keywords.filter((keyword, id) => id !== index)
+    setKeywords(filteredKeywordsArr)
+  }
+
   useEffect(() => {
     addKeyword()
   }, [keyword])
@@ -30,11 +35,24 @@ const Keywords = ({keywords, setKeywords}) => {
               onChange={e => setKeyword(e.target.value)} 
               />
           </InputGroup>
-          <div className='flex gap-2 flex-wrap w-full justify-center'>
-            {keywords.map(keyword => (
-              <span className='bg-gray-200 py-2 px-8 rounded-full'>{keyword}</span>
+          <HStack spacing={4}>
+            {keywords.map((keyword, index) => (
+             <Tag
+              size='lg'
+              borderRadius='full'
+              variant='solid'
+              backgroundColor='gray.300'
+              borderBottomColor='gray.500'
+              borderBottomWidth='2px'
+              textColor='black'
+             >
+                <TagLabel>{keyword}</TagLabel>
+                <TagCloseButton
+                  onClick={() => removeKeyword(index)}
+                 />
+              </Tag>
             ))}
-          </div>
+          </HStack>
         </Stack>
   )
 }

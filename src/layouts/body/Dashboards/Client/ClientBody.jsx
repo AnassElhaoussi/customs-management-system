@@ -97,7 +97,7 @@ const ClientBody = () => {
                                             <div className='flex gap-1 flex-wrap'>
                                                 {keywords.map(keyword => {
                                                     return(
-                                                        <span className='bg-gray-300 py-2 px-4 font-semibold rounded-full text-[10px]'>
+                                                        <span className='bg-gray-300 border-b-2 border-gray-500 py-2 px-4 font-semibold rounded-full text-[10px]'>
                                                             {keyword}
                                                         </span>
                                                     )
