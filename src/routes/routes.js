@@ -55,7 +55,8 @@ const AppRoutes = () => {
         <EventPopupProvider>
           <div className='font-body'>
             <Routes>
-              {RoutesArr.map(({path, element}) => (
+              {RoutesArr.map(({path, element}) => ( 
+                // mapping through the routes array
                 <Route path={path} element={element} />
               ))}
             </Routes>

@@ -7,7 +7,7 @@ import { auth } from '../services/firebase'
 
 const ClientAccount = () => {
     const currUser = useContext(ClientAuthContext)
-    const currUserCollections = useSelector((state) => state.collections.responses.data)
+    const currUserCollections = useSelector((state) => state.collections.data.collectionsData)
     ?.filter(({uid}) => auth.currentUser.uid === uid)
 
 

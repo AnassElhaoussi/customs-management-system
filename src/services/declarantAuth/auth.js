@@ -1,6 +1,10 @@
 import firebase from 'firebase/compat/app'
 import 'firebase/compat/auth'
 
+// declarants app config
+// this app is dedicated to :
+// - 'only' declarants authentication
+
 const declarantAppConfig = {
     apiKey: process.env.REACT_APP_DECLARANT_API_KEY,
     authDomain: process.env.REACT_APP_DECLARANT_AUTH_DOMAIN,

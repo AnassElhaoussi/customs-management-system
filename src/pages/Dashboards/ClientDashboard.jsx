@@ -5,15 +5,15 @@ import { useEventPopupContext } from '../../context/EventPopupContext'
 import ProfileSidebar from '../../layouts/Navigation/Dashboards/Client/ProfileSidebar'
 import ClientBody from '../../layouts/body/Dashboards/Client/ClientBody'
 import {Alert, AlertIcon, Text} from '@chakra-ui/react'
-import {getSuccess, getError} from '../../redux/slices/collectionsSlice'
+import {getSuccess, getError} from '../../redux/slices/asyncEvents'
 import { useSelector, useDispatch } from 'react-redux'
 
 
 const ClientDashboard = () => {
     const currUser = useContext(ClientAuthContext)
     const dispatch = useDispatch()
-    const success = useSelector((state) => state.collections.responses.success)
-    const error = useSelector((state) => state.collections.responses.error)
+    const success = useSelector((state) => state.asyncEvents.responses.success)
+    const error = useSelector((state) => state.asyncEvents.responses.error)
 
 
     useEffect(() => {

@@ -6,11 +6,10 @@ import { faFolderPlus, faLock, faTrashCan, faFile } from '@fortawesome/free-soli
 import { ClientAuthContext } from '../../../../context/ClientAuthContext'
 import { Avatar, Menu, MenuButton, MenuItem, MenuList, Stack, Skeleton } from '@chakra-ui/react'
 import FilterCollections from '../../../../components/FilterCollections'
-import { errorImage } from '../../../../assets/images'
-import { useEventPopupContext } from '../../../../context/EventPopupContext'
 import {AddIcon} from '@chakra-ui/icons'
 import { useSelector, useDispatch } from 'react-redux'
-import { getLoading, getSuccess, getError, getData } from '../../../../redux/slices/collectionsSlice'
+import { getCollectionsData } from '../../../../redux/slices/collectionsSlice'
+import { getLoading, getSuccess, getError } from '../../../../redux/slices/asyncEvents'
 
 
 const ClientBody = () => {
@@ -19,9 +18,9 @@ const ClientBody = () => {
     const [searchValue, setSearchValue] = useState('')
     const currUser = useContext(ClientAuthContext)
     const currUserCollections = 
-    useSelector((state) => state.collections.responses.data)
+    useSelector((state) => state.collections.data.collectionsData)
     ?.filter(({uid}) => auth.currentUser.uid === uid)
-    const loading = useSelector((state) => state.collections.responses.loading)
+    const loading = useSelector((state) => state.asyncEvents.responses.loading)
     const dispatch = useDispatch()
 
     useEffect(
@@ -34,7 +33,7 @@ const ClientBody = () => {
                     id: doc.id
                 }))
 
-                dispatch(getData(collectionsData))
+                dispatch(getCollectionsData(collectionsData))
                 dispatch(getLoading(false))
             })
 
@@ -67,12 +66,13 @@ const ClientBody = () => {
                 <Link to='create-collection'>
                    <FontAwesomeIcon icon={faFolderPlus} className='text-7xl hover:scale-110 transition-all' />
                 </Link>
-                {loading && (
-                    <Stack display='flex' flexDirection='column' maxWidth='70%'>
-                        <Skeleton height='90px' startColor='gray.200' endColor='gray.300' />
-                        <Skeleton height='90px' startColor='gray.200' endColor='gray.300' />
-                        <Skeleton height='90px' startColor='gray.200' endColor='gray.300' />
-                    </Stack>
+                {loading && (     
+                        <Stack display='flex' flexDirection='column' maxWidth='70%'>
+                            <Skeleton height='90px' startColor='gray.200' endColor='gray.300' />
+                            <Skeleton height='90px' startColor='gray.200' endColor='gray.300' />
+                            <Skeleton height='90px' startColor='gray.200' endColor='gray.300' />
+                        </Stack>
+
                 )}
                 <div className='flex gap-x-4 flex-wrap gap-y-4 pr-5'>
                     {searchValue.length > 0 ? 

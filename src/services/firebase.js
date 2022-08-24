@@ -3,6 +3,10 @@ import 'firebase/compat/auth'
 import 'firebase/compat/firestore'
 import { useEffect } from 'react';
 
+// firebase app config
+// this firebase app is dedicated to :
+// - 'only' clients authentication (register & login)
+// - Dealing with firestore db and storage by both clients and declarants
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,

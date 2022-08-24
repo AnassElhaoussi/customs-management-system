@@ -1,9 +1,11 @@
 import React, { useState, useCallback, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
+import { faCirclePlus, faPlane } from '@fortawesome/free-solid-svg-icons'
 import SubmitCreateCollection from './SubmitCreateCollection'
 import Keywords from './Keywords'
 import { Input, Text, Textarea, Stack, InputGroup, Button } from '@chakra-ui/react'
+import { useSelector } from 'react-redux'
+import {motion} from 'framer-motion'
 
 
 const CreateCollection = () => {
@@ -12,6 +14,7 @@ const CreateCollection = () => {
     const [colDescription, setColDescription] = useState('')
     const [keywords, setKeywords] = useState([])
     const [errorMessage, setErrorMessage] = useState('')
+    const loading = useSelector((state) => state.asyncEvents.responses.loading)
 
     const colNameChange = (e) => setColName(e.target.value)
 
@@ -36,6 +39,12 @@ const CreateCollection = () => {
                         <Stack spacing={5} minWidth='40%'>
                             {errorMessage && (
                                 <span className='text-red-600'>{errorMessage}</span>
+                            )}
+                            {loading && (
+                                <motion.div animate={{rotate: [0, 360, 360, 0]}} transition={{duration: 0.9, repeat: Infinity}}>
+                                    <FontAwesomeIcon icon={faPlane} className='text-xl' />
+                                </motion.div>
+                                
                             )}
                             <InputGroup display='flex' flexDirection='column' alignItems='start' gap='1rem'>
                                 <Text>Collection name : </Text>

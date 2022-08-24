@@ -3,37 +3,28 @@ import { db } from '../../services/firebase'
 
 
 const initialState = {
-    responses: {
-        loading: true,
-        success: "",
-        data: null,
-        error: ""
+    data: {
+        collectionsData: null,
     }
 }
 
+// This slice is for all firestore collections and subcollections
 
 
 export const collectionsSlice = createSlice({
     name: 'collections',
     initialState,
     reducers: {
-        getLoading: (state, action) => {
-            state.responses.loading = action.payload
+
+        // getData reducer is to get the collections array from firestore
+        getCollectionsData: (state, action) => {
+            state.data.collectionsData = action.payload // The payload will be the collections arr 
         },
 
-        getData: (state, action) => {
-            state.responses.data = action.payload
-        },
 
-        getError: (state, action) => {
-            state.responses.error = action.payload
-        },
-        getSuccess: (state, action) => {
-            state.responses.success = action.payload
-        }
     }
 })
 
-export const { getLoading, getSuccess, getError, getData } = collectionsSlice.actions
+export const { getCollectionsData } = collectionsSlice.actions
 
 export default collectionsSlice.reducer
