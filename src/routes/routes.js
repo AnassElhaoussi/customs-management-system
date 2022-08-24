@@ -11,6 +11,7 @@ import { ClientAuthContext } from '../context/ClientAuthContext'
 import ClientAccount from '../components/ClientAccount'
 import CreateCollection from '../components/CreateCollection'
 import React from 'react'
+import { EventPopupProvider } from '../context/EventPopupContext'
 
 const AppRoutes = () => {
 
@@ -32,6 +33,7 @@ const AppRoutes = () => {
     {
       path: '/client-dashboard',
       element: <ClientDashboard />
+
     },
     {
       path: '/declarant-dashboard',
@@ -50,13 +52,15 @@ const AppRoutes = () => {
 
   return (
       <ChakraProvider>
-        <div className='font-body'>
-          <Routes>
-            {RoutesArr.map(({path, element}) => (
-              <Route path={path} element={element} />
-            ))}
-          </Routes>
-        </div>
+        <EventPopupProvider>
+          <div className='font-body'>
+            <Routes>
+              {RoutesArr.map(({path, element}) => (
+                <Route path={path} element={element} />
+              ))}
+            </Routes>
+          </div>
+        </EventPopupProvider>
       </ChakraProvider>
   )
 }

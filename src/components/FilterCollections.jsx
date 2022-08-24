@@ -2,7 +2,7 @@ import React, {useState, useEffect, memo} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 
-const FilterCollections = ({userCollections, setUserCollections, setFilteredCollections, searchValue, setSearchValue}) => {
+const FilterCollections = ({userCollections, setFilteredCollections, searchValue, setSearchValue}) => {
 
 console.log('filter re-rendered')
   
