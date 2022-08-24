@@ -1,4 +1,5 @@
 import React, {useContext, useState} from 'react'
+import {useSelector} from 'react-redux'
 import {Avatar} from '@chakra-ui/react'
 import { ClientAuthContext } from '../context/ClientAuthContext'
 import { auth } from '../services/firebase'
@@ -6,6 +7,9 @@ import { auth } from '../services/firebase'
 
 const ClientAccount = () => {
     const currUser = useContext(ClientAuthContext)
+    const currUserCollections = useSelector((state) => state.collections.responses.data)
+    ?.filter(({uid}) => auth.currentUser.uid === uid)
+
 
     const handleSignOut = () => auth.signOut()
 
@@ -27,7 +31,7 @@ const ClientAccount = () => {
             <div className='p-10 h-1/2 flex items-center justify-center gap-x-20 gap-y-5 flex-wrap py-28'>
                 <div className='space-y-2 bg-gray-50 rounded-md p-5 border-b-[5px] border-gray-500'>
                     <h2 className='text-gray-600'>Total Collections</h2>
-                    <h1 className='text-4xl'>0</h1>
+                    <h1 className='text-4xl'>{currUserCollections.length}</h1>
                 </div>
                 <div className='space-y-2 bg-gray-50 rounded-md p-5 border-b-[5px] border-gray-500'>
                     <h2 className='text-gray-600'>Total Documents</h2>

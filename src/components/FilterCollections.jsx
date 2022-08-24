@@ -2,19 +2,19 @@ import React, {useState, useEffect, memo} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 
-const FilterCollections = ({userCollections, setFilteredCollections, searchValue, setSearchValue}) => {
+const FilterCollections = ({currUserCollections, setFilteredCollections, searchValue, setSearchValue}) => {
 
 console.log('filter re-rendered')
   
   useEffect(() => {
     if(searchValue !== ""){
-        const filteredCollectionsArr = userCollections.filter(
+        const filteredCollectionsArr = currUserCollections.filter(
         ({collectionName}) => 
             collectionName.toLowerCase().includes(searchValue.toLowerCase())
         )
         setFilteredCollections(filteredCollectionsArr)
     } else {
-        setFilteredCollections(userCollections)
+        setFilteredCollections(currUserCollections)
     }
   }, [searchValue])
   

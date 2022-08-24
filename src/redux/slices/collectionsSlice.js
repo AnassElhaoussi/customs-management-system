@@ -4,8 +4,9 @@ import { db } from '../../services/firebase'
 
 const initialState = {
     responses: {
-        loading: "",
-        success: null,
+        loading: true,
+        success: "",
+        data: null,
         error: ""
     }
 }
@@ -20,16 +21,19 @@ export const collectionsSlice = createSlice({
             state.responses.loading = action.payload
         },
 
-        getSuccess: (state, action) => {
-            state.responses.success = action.payload
+        getData: (state, action) => {
+            state.responses.data = action.payload
         },
 
         getError: (state, action) => {
             state.responses.error = action.payload
+        },
+        getSuccess: (state, action) => {
+            state.responses.success = action.payload
         }
     }
 })
 
-export const { getLoading, getSuccess, getError } = collectionsSlice.actions
+export const { getLoading, getSuccess, getError, getData } = collectionsSlice.actions
 
 export default collectionsSlice.reducer
