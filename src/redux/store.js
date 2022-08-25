@@ -1,10 +1,7 @@
-import { configureStore } from '@reduxjs/toolkit'
-import collectionsReducer from './slices/collectionsSlice'
-import asyncEventsReducer from './slices/asyncEvents'
+import {
+    createStore,
+} from '@reduxjs/toolkit'
 
-export const store = configureStore({
-    reducer: {
-        collections: collectionsReducer,
-        asyncEvents: asyncEventsReducer
-    },
-})
+import rootReducer from './slices'
+
+export const store = createStore(rootReducer)

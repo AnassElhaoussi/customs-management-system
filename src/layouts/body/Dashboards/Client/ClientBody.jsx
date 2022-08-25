@@ -10,6 +10,7 @@ import {AddIcon} from '@chakra-ui/icons'
 import { useSelector, useDispatch } from 'react-redux'
 import { getCollectionsData } from '../../../../redux/slices/collectionsSlice'
 import { getLoading, getSuccess, getError } from '../../../../redux/slices/asyncEvents'
+import SendCollection from '../../../../components/SendCollection'
 
 
 const ClientBody = () => {
@@ -81,15 +82,18 @@ const ClientBody = () => {
                             return (
                                 <div className='bg-gray-200 p-6 md:w-80 w-full h-fit rounded-md text-gray-800 border-b-8 border-gray-500'>
                                     <div className='flex flex-col gap-8 relative'>
-                                        <div className='flex gap-4 items-center'>
-                                            <Link to={`account/${currUser.displayName}`}>
-                                                <Avatar name={currUser.displayName} />
-                                            </Link>
-                                            <div>
-                                                <h2>{currUser.displayName}</h2>
-                                                <span className='text-xs text-blue-600'>This collection is now private <FontAwesomeIcon icon={faLock} /></span>
+                                        
+                                        <div className='flex justify-between items-start flex-wrap-reverse gap-y-3'>
+                                            <div className='flex gap-4'>
+                                                <Link to={`account/${currUser.displayName}`}>
+                                                    <Avatar name={currUser.displayName} className=' bg-blue-300' />
+                                                </Link>
+                                                <div className=' '>
+                                                    <h2>{currUser.displayName}</h2>
+                                                    <span className='text-xs text-blue-600'>This collection is now private <FontAwesomeIcon icon={faLock} /></span>
+                                                </div>
                                             </div>
-                                            <div className='absolute -right-3 -top-3 cursor-pointer'>
+                                            <div className='flex gap-1 items-center'>
                                                 <FontAwesomeIcon 
                                                 icon={faTrashCan}                          
                                                 onClick={() => deleteCollection(id, collectionName)}
@@ -107,6 +111,7 @@ const ClientBody = () => {
                                                     </MenuList>
                                                 </Menu>
                                             </div>
+                                            <SendCollection collectionName={collectionName} />
                                         </div>
                                         <div className='space-y-4'>
                                             <h1 className='font-extrabold text-2xl'>{collectionName}</h1>
@@ -132,15 +137,17 @@ const ClientBody = () => {
                             return (
                                 <div className='relative bg-gray-200 p-6 md:w-80 w-full h-fit rounded-md text-gray-800 border-b-8 border-gray-500'>
                                     <div className='flex flex-col gap-8 relative'>
-                                        <div className='relative flex gap-4 items-center'>
-                                            <Link to={`account/${currUser.displayName}`}>
-                                                <Avatar name={currUser.displayName} />
-                                            </Link>
-                                            <div>
-                                                <h2>{currUser.displayName}</h2>
-                                                <span className='text-xs text-blue-600'>This collection is now private  <FontAwesomeIcon icon={faLock} /></span>
+                                        <div className='relative flex justify-between items-start flex-wrap-reverse gap-y-3'>
+                                            <div className="flex gap-4">
+                                                <Link to={`account/${currUser.displayName}`}>
+                                                    <Avatar name={currUser.displayName} />
+                                                </Link>
+                                                <div>
+                                                    <h2>{currUser.displayName}</h2>
+                                                    <span className='text-xs text-blue-600'>This collection is now private  <FontAwesomeIcon icon={faLock} /></span>
+                                                </div>
                                             </div>
-                                            <div className='absolute -right-3 -top-3 cursor-pointer'>
+                                            <div className='flex gap-1 items-center'>
                                                 <FontAwesomeIcon 
                                                 icon={faTrashCan}                          
                                                 onClick={() => deleteCollection(id, collectionName)}
@@ -157,6 +164,7 @@ const ClientBody = () => {
                                                         </MenuItem>
                                                     </MenuList>
                                                 </Menu>
+                                                <SendCollection collectionName={collectionName} />
                                             </div>
                                         </div>
                                         <div className='space-y-4'>
