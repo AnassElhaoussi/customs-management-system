@@ -5,7 +5,8 @@ import { useEventPopupContext } from '../../context/EventPopupContext'
 import ProfileSidebar from '../../layouts/Navigation/Dashboards/Client/ProfileSidebar'
 import ClientBody from '../../layouts/body/Dashboards/Client/ClientBody'
 import {Alert, AlertIcon, Text} from '@chakra-ui/react'
-import {getSuccess, getError} from '../../redux/slices/asyncEvents'
+import {getSuccess, getError, getLoading} from '../../redux/slices/asyncEvents'
+import {getCollectionsData} from '../../redux/slices/collectionsSlice'
 import { useSelector, useDispatch } from 'react-redux'
 
 
@@ -14,6 +15,24 @@ const ClientDashboard = () => {
     const dispatch = useDispatch()
     const success = useSelector((state) => state.asyncEvents.responses.success)
     const error = useSelector((state) => state.asyncEvents.responses.error)
+    const currUserCollections = useSelector((state) => state.collections.data.collectionsData)
+    ?.filter(({uid}) => auth.currentUser.uid === uid)
+
+    useEffect(
+        () => {
+           
+            db.collection('collections')
+            .orderBy('createdAt')
+            .onSnapshot(snapshotQuery => {
+                const collectionsData = snapshotQuery.docs.map(doc => ({
+                    ...doc.data(),
+                    id: doc.id
+                }))
+                dispatch(getCollectionsData(collectionsData))
+                dispatch(getLoading(false))
+            })
+ 
+    }, [])
 
 
     useEffect(() => {

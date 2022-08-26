@@ -1,4 +1,4 @@
-import React, {useRef} from 'react'
+import React, {useRef, memo} from 'react'
 import {
     Button,
     Modal,
@@ -19,6 +19,7 @@ import { faPaperPlane, faCircleCheck } from '@fortawesome/free-solid-svg-icons'
 
 const SendCollection = ({collectionName}) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
+    console.log('send collection re-rendered')
     const btnRef = useRef(null)
     return (
         <>
@@ -97,4 +98,4 @@ const SendCollection = ({collectionName}) => {
     )
 }
 
-export default SendCollection
+export default memo(SendCollection)

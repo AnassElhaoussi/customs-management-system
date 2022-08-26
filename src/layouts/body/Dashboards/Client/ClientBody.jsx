@@ -13,6 +13,7 @@ import { getLoading, getSuccess, getError } from '../../../../redux/slices/async
 import SendCollection from '../../../../components/SendCollection'
 
 
+
 const ClientBody = () => {
 
     const [filteredCollections, setFilteredCollections] = useState([])
@@ -23,23 +24,6 @@ const ClientBody = () => {
     ?.filter(({uid}) => auth.currentUser.uid === uid)
     const loading = useSelector((state) => state.asyncEvents.responses.loading)
     const dispatch = useDispatch()
-
-    useEffect(
-        () => {
-            const unsubscribe = db.collection('collections')
-            .orderBy('createdAt')
-            .onSnapshot(snapshotQuery => {
-                const collectionsData = snapshotQuery.docs.map(doc => ({
-                    ...doc.data(),
-                    id: doc.id
-                }))
-
-                dispatch(getCollectionsData(collectionsData))
-                dispatch(getLoading(false))
-            })
-
-            return () => unsubscribe
-    }, [])
 
         const deleteCollection = (id, name) => {
             db
@@ -56,6 +40,7 @@ const ClientBody = () => {
 
 
         return (
+        
         <div className='space-y-16 pl-28 py-5 w-full'>
             <FilterCollections 
                 currUserCollections={currUserCollections} 
@@ -106,7 +91,7 @@ const ClientBody = () => {
                                                     </MenuButton>
                                                     <MenuList>
                                                         <MenuItem icon={<AddIcon />}>
-                                                            Add a file
+                                                            Add a document
                                                         </MenuItem>
                                                     </MenuList>
                                                 </Menu>
@@ -159,9 +144,11 @@ const ClientBody = () => {
                                                         />
                                                     </MenuButton>
                                                     <MenuList>
-                                                        <MenuItem icon={<AddIcon />}>
-                                                            Add a file
-                                                        </MenuItem>
+                                                        <Link to={`collection/${id}/create-document`}>
+                                                            <MenuItem icon={<AddIcon />}>
+                                                                Add a document
+                                                            </MenuItem>
+                                                        </Link>
                                                     </MenuList>
                                                 </Menu>
                                                 <SendCollection collectionName={collectionName} />

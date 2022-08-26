@@ -10,13 +10,25 @@ import DeclarantDashboard from '../pages/Dashboards/DeclarantDashboard'
 import { ClientAuthContext } from '../context/ClientAuthContext'
 import ClientAccount from '../components/ClientAccount'
 import CreateCollection from '../components/CreateCollection'
-import React from 'react'
 import { EventPopupProvider } from '../context/EventPopupContext'
+import CreateDocument from '../components/CreateDocument'
+import {useSelector} from 'react-redux'
+import {auth} from '../services/firebase'
 
 const AppRoutes = () => {
 
   const currUser = useContext(ClientAuthContext)
+  const currUserCollections = useSelector((state) => state.collections.data.collectionsData)
+  ?.filter(({uid}) => auth.currentUser.uid === uid)
 
+  const createDocumentRoutes = currUserCollections?.map(collection => {
+      return {
+        path: `/client-dashboard/collection/${collection?.id}/create-document`,
+        element: <CreateDocument />
+      }
+  })
+  
+  
   const RoutesArr = [
     {
       path: '/',
@@ -46,18 +58,22 @@ const AppRoutes = () => {
     {
       path: '/client-dashboard/create-collection',
       element: <CreateCollection />
-
-    }
+    },
+    
   ]
+  
+  const NewRoutes = currUserCollections 
+  ? [...RoutesArr, ...createDocumentRoutes]
+  : RoutesArr
 
   return (
       <ChakraProvider>
         <EventPopupProvider>
           <div className='font-body'>
             <Routes>
-              {RoutesArr.map(({path, element}) => ( 
+              {NewRoutes?.map((route) => ( 
                 // mapping through the routes array
-                <Route path={path} element={element} />
+                <Route path={route?.path} element={route?.element} />
               ))}
             </Routes>
           </div>
