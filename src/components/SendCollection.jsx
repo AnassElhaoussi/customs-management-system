@@ -19,7 +19,6 @@ import { faPaperPlane, faCircleCheck } from '@fortawesome/free-solid-svg-icons'
 
 const SendCollection = ({collectionName}) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
-    console.log('send collection re-rendered')
     const btnRef = useRef(null)
     return (
         <>

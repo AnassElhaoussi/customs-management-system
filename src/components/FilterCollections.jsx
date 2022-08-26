@@ -4,7 +4,6 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons'
 
 const FilterCollections = ({currUserCollections, setFilteredCollections, searchValue, setSearchValue}) => {
 
-console.log('filter re-rendered')
   
   useEffect(() => {
     if(searchValue !== ""){

@@ -21,9 +21,9 @@ const CreateCollection = () => {
     return (
         <div className='bg-gray-100 h-screen text-gray-800 py-10'>
                 <div className='flex flex-col items-center text-center space-y-8'>
-                    <div className='space-y-2'>
-                    <Heading fontFamily='Inter' as='h1' size='xl' fontWeight='800' color='blue.600'>Create a collection</Heading>
-                    <Heading fontFamily='Inter' as='p' size='xs' fontWeight='400' className='border-b-[1px] border-gray-300 pb-4 text-gray-400'>Describe the purpose of your product by creating a collection</Heading>
+                    <div className='space-y-2 px-[4rem] '>
+                        <Heading fontFamily='Inter' as='h1' size='xl' fontWeight='800' color='blue.600'>Create a collection</Heading>
+                        <Heading fontFamily='Inter' as='p' size='xs' fontWeight='400' className='border-b-[1px] border-gray-300 pb-4 text-gray-400'>Describe the purpose of your product by creating a collection</Heading>
                     </div>
                     {!collectionForm ? (
                         <button className='bg-gray-200 py-3 px-8 rounded-md hover:border-b-8 border-gray-500 transition-all'

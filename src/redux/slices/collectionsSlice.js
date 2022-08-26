@@ -5,6 +5,7 @@ import { db } from '../../services/firebase'
 const initialState = {
     data: {
         collectionsData: null,
+        documentsData: null
     }
 }
 
@@ -16,15 +17,20 @@ export const collectionsSlice = createSlice({
     initialState,
     reducers: {
 
-        // getData reducer is to get the collections array from firestore
+        // getCollectionsData reducer is to get each collections from firestore
         getCollectionsData: (state, action) => {
             state.data.collectionsData = action.payload // The payload will be the collections arr 
         },
+
+        // getDocumentsData is to get each document from a subcollection in firestore
+        getDocumentsData: (state, action) => {
+            state.data.documentsData = action.payload // The payload will be the documents arr 
+        }
 
 
     }
 })
 
-export const { getCollectionsData } = collectionsSlice.actions
+export const { getCollectionsData, getDocumentsData } = collectionsSlice.actions
 
 export default collectionsSlice.reducer

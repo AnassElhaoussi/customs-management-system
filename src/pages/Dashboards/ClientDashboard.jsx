@@ -17,10 +17,9 @@ const ClientDashboard = () => {
     const error = useSelector((state) => state.asyncEvents.responses.error)
     const currUserCollections = useSelector((state) => state.collections.data.collectionsData)
     ?.filter(({uid}) => auth.currentUser.uid === uid)
-
+    
     useEffect(
         () => {
-           
             db.collection('collections')
             .orderBy('createdAt')
             .onSnapshot(snapshotQuery => {
@@ -30,8 +29,10 @@ const ClientDashboard = () => {
                 }))
                 dispatch(getCollectionsData(collectionsData))
                 dispatch(getLoading(false))
+                
 
             })
+
  
     }, [])
 

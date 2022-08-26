@@ -6,15 +6,15 @@ import { useNavigate } from 'react-router-dom'
 import firebase from 'firebase/compat/app'
 import moment from 'moment'
 import { Button } from '@chakra-ui/react'
-import {getSuccess, getError, getLoading} from '../redux/slices/asyncEvents'
-import { useDispatch, useSelector } from 'react-redux'
+import {getSuccess, getError} from '../redux/slices/asyncEvents'
+import { useDispatch } from 'react-redux'
 import {Spinner} from '@chakra-ui/react'
 
 const SubmitCreateCollection = ({colName, colDescription, keywords, setErrorMessage}) => {
     const currUser = useContext(ClientAuthContext)
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const loading = useSelector((state) => state.asyncEvents.responses.loading)
+    const [loading, setLoading] = useState(false)
     
     const submitCollection = async () => {
         const { uid, displayName } = currUser
@@ -24,7 +24,7 @@ const SubmitCreateCollection = ({colName, colDescription, keywords, setErrorMess
             && keywords.length === 4
             ) {
                 try {
-                    dispatch(getLoading(true))
+                    setLoading(true)
                     await db
                     .collection('collections')
                     .add({
@@ -37,14 +37,15 @@ const SubmitCreateCollection = ({colName, colDescription, keywords, setErrorMess
                         date: moment().format('MMMM Do YYYY, h:mm:ss a'),
                     })
                    
+                    console.log('collection added')
+                    setLoading(false)
                     setErrorMessage('')
                     navigate('/client-dashboard')
                     dispatch(getSuccess('This collection has been created'))
-                    dispatch(getLoading(false))
                 } catch {
+                    setLoading(false)
                     setErrorMessage('')
                     dispatch(getError('There was an error processing your request!'))
-                    dispatch(getLoading(false))
                 }                   
 
         } else {
@@ -56,10 +57,7 @@ const SubmitCreateCollection = ({colName, colDescription, keywords, setErrorMess
         return <Button
         colorScheme='blue'
         onClick={submitCollection}
-        >{!loading ? 'Submit' : <Spinner thickness='4px'
-        speed='0.65s'
-        emptyColor='gray.200'
-        color='white' />}</Button>
+        >{!loading ? 'Submit' : <Spinner color='white' />}</Button>
 }
 
 export default SubmitCreateCollection
