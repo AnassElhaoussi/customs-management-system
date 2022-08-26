@@ -21,12 +21,15 @@ const AppRoutes = () => {
   const currUserCollections = useSelector((state) => state.collections.data.collectionsData)
   ?.filter(({uid}) => auth.currentUser.uid === uid)
 
+  // documents routes with each doc id
+
   const createDocumentRoutes = currUserCollections?.map(collection => {
       return {
         path: `/client-dashboard/collection/${collection?.id}/create-document`,
         element: <CreateDocument />
       }
   })
+
   
   
   const RoutesArr = [
@@ -61,7 +64,11 @@ const AppRoutes = () => {
     },
     
   ]
-  
+ 
+  // Checking if the userCollections are available 
+  // if it's the case that will return a concatinated version of the first route array and the documents routes
+  // else it will return the original route with no documents
+
   const NewRoutes = currUserCollections 
   ? [...RoutesArr, ...createDocumentRoutes]
   : RoutesArr

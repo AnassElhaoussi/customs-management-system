@@ -19,7 +19,7 @@ const ClientBody = () => {
     const [filteredCollections, setFilteredCollections] = useState([])
     const [searchValue, setSearchValue] = useState('')
     const currUser = useContext(ClientAuthContext)
-    const currUserCollections = 
+    const currUserCollections =
     useSelector((state) => state.collections.data.collectionsData)
     ?.filter(({uid}) => auth.currentUser.uid === uid)
     const loading = useSelector((state) => state.asyncEvents.responses.loading)
@@ -67,7 +67,6 @@ const ClientBody = () => {
                             return (
                                 <div className='bg-gray-200 p-6 md:w-80 w-full h-fit rounded-md text-gray-800 border-b-8 border-gray-500'>
                                     <div className='flex flex-col gap-8 relative'>
-                                        
                                         <div className='flex justify-between items-start flex-wrap-reverse gap-y-3'>
                                             <div className='flex gap-4'>
                                                 <Link to={`account/${currUser.displayName}`}>

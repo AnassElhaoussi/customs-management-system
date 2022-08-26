@@ -30,6 +30,7 @@ const ClientDashboard = () => {
                 }))
                 dispatch(getCollectionsData(collectionsData))
                 dispatch(getLoading(false))
+
             })
  
     }, [])
